@@ -1,30 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Best Deals & Finds</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namikaze Store</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Georgia', 'Times New Roman', serif; }
+        body { background-color: #fbf9f6; color: #222; }
+
+        /* Top Announcement Bar */
+        .top-bar { background: #111; color: #fff; text-align: center; padding: 8px; font-size: 12px; font-family: sans-serif; letter-spacing: 1px; }
+
+        /* Navbar */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 5%; background: #fff; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 24px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; color: #111; }
+        .nav-categories { display: flex; gap: 15px; font-family: sans-serif; font-size: 13px; list-style: none; overflow-x: auto; padding-bottom: 5px; }
+        .nav-categories li a { text-decoration: none; color: #555; white-space: nowrap; }
+        .nav-categories li a:hover { color: #000; font-weight: bold; }
+
+        /* Hero Banner */
+        .hero { display: flex; flex-wrap: wrap; background: #2d4030; color: #fff; margin: 20px 5%; border-radius: 4px; overflow: hidden; }
+        .hero-text { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; min-width: 280px; }
+        .hero-text h1 { font-size: 32px; font-weight: normal; line-height: 1.2; margin-bottom: 20px; }
+        .hero-btn { display: inline-block; background: #fff; color: #111; padding: 12px 24px; text-decoration: none; font-family: sans-serif; font-size: 13px; font-weight: bold; border-radius: 2px; width: fit-content; }
+        .hero-img { flex: 1; min-width: 280px; background: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800') center/cover; min-height: 250px; }
+
+        /* Section Title */
+        .section-title { text-align: center; margin: 40px 0 20px; }
+        .section-title h2 { font-size: 26px; font-weight: normal; }
+
+        /* Category Pill Filters */
+        .pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 0 5% 30px; font-family: sans-serif; }
+        .pill { background: #eee; padding: 8px 18px; border-radius: 20px; text-decoration: none; color: #333; font-size: 13px; }
+        .pill.active { background: #222; color: #fff; }
+
+        /* Product Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 0 5% 50px; }
+        .card { background: #fff; border: 1px solid #eee; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); }
+        .card-img { width: 100%; height: 220px; object-fit: cover; }
+        .card-body { padding: 15px; font-family: sans-serif; display: flex; flex-direction: column; flex-grow: 1; }
+        .brand-name { font-size: 14px; font-weight: bold; margin-bottom: 2px; }
+        .location { font-size: 11px; color: #777; margin-bottom: 6px; }
+        .desc { font-size: 12px; color: #555; margin-bottom: 12px; line-height: 1.4; flex-grow: 1; }
+        .buy-btn { background: #ffd814; border: 1px solid #fcd200; text-align: center; padding: 8px; font-size: 12px; font-weight: bold; color: #111; border-radius: 20px; text-decoration: none; }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 p-4">
+<body>
 
-  <h1 class="text-2xl font-bold text-center mb-6">Top Amazon Recommendations</h1>
+    <div class="top-bar">Handpicked Amazon Recommendations</div>
 
-  <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <nav>
+        <a href="#" class="logo">Namikaze Store</a>
+        <ul class="nav-categories">
+            <li><a href="#">Home Decor</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Beauty</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Men</a></li>
+        </ul>
+    </nav>
 
-    <!-- PRODUCT CARD 1 -->
-    <div class="bg-white p-4 rounded-xl shadow-md text-center border">
-      <img src="https://via.placeholder.com/200" class="h-40 mx-auto object-contain mb-2" alt="Product Image">
-      <h2 class="font-semibold text-lg mb-2">Sample Product</h2>
-      <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="bg-yellow-400 hover:bg-yellow-500 font-bold py-2 px-4 rounded block text-black">
-        Buy on Amazon
-      </a>
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Discover top products for your everyday lifestyle.</h1>
+            <a href="#products" class="hero-btn">Shop Selection</a>
+        </div>
+        <div class="hero-img"></div>
     </div>
 
-  </div>
+    <div class="section-title">
+        <h2>The best finds for every category</h2>
+    </div>
+
+    <div class="pills">
+        <a href="#" class="pill active">Home decor</a>
+        <a href="#" class="pill">Food & drink</a>
+        <a href="#" class="pill">Women</a>
+        <a href="#" class="pill">Beauty</a>
+        <a href="#" class="pill">Men</a>
+    </div>
+
+    <div class="grid" id="products">
+
+        <!-- Product Item 1 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400" class="card-img" alt="Product">
+            <div class="card-body">
+                <div class="brand-name">Reusable Drinkware</div>
+                <div class="location">Best Seller</div>
+                <div class="desc">Premium quality durable drinkware for daily home use.</div>
+                <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="buy-btn">View on Amazon</a>
+            </div>
+        </div>
+
+        <!-- Product Item 2 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=400" class="card-img" alt="Product">
+            <div class="card-body">
+                <div class="brand-name">Innovative Candles</div>
+                <div class="location">Trending Deal</div>
+                <div class="desc">Designer scented candles to elevate your home aesthetic.</div>
+                <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="buy-btn">View on Amazon</a>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
+
 <!-- Product Card: Denim Jeans with Your Image & Link -->
         <div class="product-card">
             <img src="5723_2.jpg" alt="Stylish Denim Jeans">
